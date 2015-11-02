@@ -33,9 +33,15 @@ main.js
     var mapillary_client_id = "MkJKbDA0bnZuZlcxeTJHTmFqN3g1dzo0NWY2NDVlYWJhM2Q0ZGZj";	
 	
 	
-	
+    {"keyboardZoomOffset" : .05} -> {"keyboardZoomOffset" : .5}
+
+		
 
 scene.yaml
+
+	type: GeoJSON
+	url:  //vector.mapzen.com/osm/all/{z}/{x}/{y}.json?api_key=vector-tiles-PN6Vg8k
+
 	mapillary.max_zoom
 		14 -> 18
 

@@ -18,10 +18,17 @@ sources:
         type: MVT
         url:  //d2munx5tg0hw47.cloudfront.net/tiles/{z}/{x}/{y}.mapbox
         max_zoom: 18
+	
     osm:
         type: GeoJSON
-        url:  //vector.mapzen.com/osm/all/{z}/{x}/{y}.json?api_key=vector-tiles-HqUVidw
+        url:  //vector.mapzen.com/osm/all/{z}/{x}/{y}.json?api_key=vector-tiles-PN6Vg8k
+        #type: TopoJSONTiles
+        #url: '//vector.dev.mapzen.com/osm/all/{z}/{x}/{y}.topojson'		
 
+#    osmtopojson:
+#        type: TopoJSONTiles
+#        url: '//vector.dev.mapzen.com/osm/all/{z}/{x}/{y}.topojson'  
+		
 layers:
     earth:
         data: { source: osm }
@@ -33,6 +40,33 @@ layers:
                 order: 0
                 color: [.5, .5, .5]
 
+				
+				
+#    landuse:
+#        data: { source: osm }
+#        properties: 
+#            key_text: ""
+#            value_text: ""	
+#        draw:
+#            polygons:
+#                order: 1
+#                color: 'red'				
+				
+	
+#    landuse:
+#        data: { source: osmtopojson }
+#        tier1:
+#            filter: 
+#                any:
+#                    - { $zoom: { min: 6 } }
+#            national_park:
+#                filter: { kind: [national_park, protected_area, nature_reserve] }
+#                draw:
+#                    polygons:
+#                      color: 'red'
+
+	
+				
     water:
         data: { source: osm }
         properties: 
