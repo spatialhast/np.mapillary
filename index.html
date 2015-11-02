@@ -55,7 +55,7 @@
     .labelLine:hover {
         outline: 2px solid gold;
     }
-
+	
     </style>
   </head>
 
@@ -72,7 +72,7 @@
 
     <!-- Main tangram library -->
     <script src="https://mapzen.com/tangram/0.2/tangram.debug.js"></script>
-    
+
     <!-- Demo module -->
     <script src="main.js"></script>
 
@@ -80,7 +80,8 @@
     <script type="text/javascript">
       window.addEventListener("hashchange",function(){parent.postMessage(window.location.hash, "*")});
     </script>
-
+	
+	
     <!-- Mapzen map UI  -->
     <script src='//s3.amazonaws.com/assets-staging.mapzen.com/ui/mapzen-ui.min.js'></script>
     <script>
@@ -90,16 +91,14 @@
       tweet: 'Mapillary Data Explorer from @mapzen',
       repo: 'https://github.com/tangrams/mapillary-explorer/'
     });
-    </script>   
-
-	
+    </script>
+  
 	<!-- Sed Default Closed Controls --> <!-- Need Fix -->
 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>	
 	<script>
 		$('.close-button').text('Open Controls');
 		$('div.dg.main.a ul').addClass('closed');
     </script>
-
 	
     <style>
     #mz-bug {
@@ -134,6 +133,7 @@
             width: 200px !important;
         }
     }
+	
     </style>
     
   </body>

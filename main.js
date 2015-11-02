@@ -16,9 +16,9 @@ map = (function () {
         'Malmö': [55.6060, 13.0010, 15],
 		'Kharkiv': [50.0732, 36.2486, 13]
     };
-
+	
     var map_start_location = locations['Kharkiv'];
-    var mapillary_client_id = "MkJKbDA0bnZuZlcxeTJHTmFqN3g1dzo0NWY2NDVlYWJhM2Q0ZGZj";
+    var mapillary_client_id = "WTlZaVBSWmxRX3dQODVTN2gxWVdGUTpjOTBkYzljZWQxOTkxOWIy";
 
     /*** URL parsing ***/
 
@@ -55,7 +55,7 @@ map = (function () {
     );
 
     var layer = Tangram.leafletLayer({
-        scene: 'np.yaml',
+        scene: 'scene.yaml',
         numWorkers: 2,
         attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a> | &copy; OSM contributors | <a href="https://mapzen.com/" target="_blank">Mapzen</a>',
         unloadInvisibleTiles: false,
@@ -74,7 +74,6 @@ map = (function () {
     //
     // GUI
     //
-    
     function updateKey(value) {
         keytext = value;
 
@@ -102,10 +101,11 @@ map = (function () {
         // scene.requestRedraw();
         updateURL();            
     }
-
+	
     // Create dat GUI
     var gui = new dat.GUI({ autoPlace: true, hideable: false, width: 300 });
-    function addGUI () {
+    
+	function addGUI () {
         gui.domElement.parentNode.style.zIndex = 5; // make sure GUI is on top of map
         window.gui = gui;
 
@@ -167,6 +167,9 @@ map = (function () {
         
     }
 
+	
+	
+	
     var selectionImage = {};
     var spinner = "";
     var trying = [];
@@ -363,3 +366,4 @@ map = (function () {
     return map;
 
 }());
+
