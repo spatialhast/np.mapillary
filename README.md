@@ -48,3 +48,5 @@ scene.yaml
 	mapillary-sequences.properties
 		min: 1370000000000
 		max: 1469183337901
+		
+http://hashrocket.com/blog/posts/faster-json-generation-with-postgresql
