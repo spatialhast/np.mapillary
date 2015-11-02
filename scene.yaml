@@ -88,7 +88,7 @@ layers:
             value_text: ""
         draw:
             lines:
-                interactive: true
+                interactive: false
                 order: 2
                 color: '#bbb'
                 width: 1px

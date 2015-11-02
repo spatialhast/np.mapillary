@@ -13,7 +13,9 @@
     <title>Mapillary Explorer</title>
 
     <link rel="stylesheet" href="lib/leaflet/leaflet.css" />
-
+	<link rel="stylesheet" href="lib/bootstrap-3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="lib/font-awesome-4.2.0/css/font-awesome.min.css">
+	
     <style>
         body {
             margin: 0px;
@@ -62,6 +64,44 @@
   <body>
     <div id="map"></div>
 
+
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">NP.Mapillary</h4>
+          </div>
+          <div class="modal-body">
+		  
+
+			
+            <div class="tab-content" id="aboutTabsContent">
+              <div class="tab-pane fade active in" id="about">
+                <p>A simple, responsive template for building web mapping applications with <a href="http://getbootstrap.com/">Bootstrap 3</a>, <a href="http://leafletjs.com/" target="_blank">Leaflet</a>.</p>
+                <div class="panel panel-primary">
+                  <div class="panel-heading">Features</div>
+                  <ul class="list-group">
+                    <li class="list-group-item">Fullscreen mobile-friendly map template with responsive navbar and modal placeholders</li>
+                    <li class="list-group-item">jQuery loading of external GeoJSON files</li>
+                    <li class="list-group-item">Logical multiple layer marker clustering via the <a href="https://github.com/Leaflet/Leaflet.markercluster" target="_blank">leaflet marker cluster plugin</a></li>
+                    <li class="list-group-item">Elegant client-side multi-layer feature search with autocomplete using <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a></li>
+                    <li class="list-group-item">Responsive sidebar feature list synced with map bounds, which includes sorting and filtering via <a href="http://listjs.com/" target="_blank">list.js</a></li>
+                    <li class="list-group-item">Marker icons included in grouped layer control via the <a href="https://github.com/ismyrnow/Leaflet.groupedlayercontrol" target="_blank">grouped layer control plugin</a></li>
+                  </ul>
+                </div>
+              </div>
+			  
+		  
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>		
+	
     <!-- 3rd party libraries -->
     <script src="lib/leaflet/leaflet.js"></script>
     <!-- bog-standard leaflet URL hash -->
@@ -95,9 +135,24 @@
   
 	<!-- Sed Default Closed Controls --> <!-- Need Fix -->
 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>	
+	<script src="lib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+	<script src="lib/leaflet.easybutton/easy-button.js"></script>
+	
 	<script>
 		$('.close-button').text('Open Controls');
 		$('div.dg.main.a ul').addClass('closed');
+		
+		$("#aboutModal").modal("show");
+		
+		L.easyButton('fa-info-circle',
+			function() {
+				$('#aboutModal').modal('show');
+				$(".navbar-collapse.in").collapse("hide");
+				return false;
+			},
+			'About map'
+		).addTo(map);		
+		
     </script>
 	
     <style>
