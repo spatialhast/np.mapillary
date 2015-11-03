@@ -143,9 +143,6 @@
         $('.close-button').text('Open Controls');
         $('div.dg.main.a ul').addClass('closed');
 
-
-        // deactivate close control
-
         $("#aboutModal").modal("show");
 
         L.easyButton('fa-info-circle',
@@ -161,17 +158,12 @@
             return 1 + index;
         };
 
-
         function linkUserName(value, row) {
             return '<a href="https://www.mapillary.com/profile/' + value + '">' + value + '</a>';
         };
 
-
-
-
-        function panameReplace(value, row) {
-            var old = JSON.stringify(value).replace(/","/g, ', ').slice(2, -2);
-            return old;
+        function panameReplace(value, row, index) {
+            return JSON.stringify(value).replace(/","/g, ', ').slice(2, -2);
         };
     </script>
 
