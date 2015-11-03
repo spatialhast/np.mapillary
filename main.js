@@ -10,14 +10,11 @@ map = (function () {
     //
 
     var locations = {
-        'Oakland': [37.8044, -122.2708, 15],
-        'New York': [40.70531887544228, -74.00976419448853, 15],
-        'Seattle': [47.5937, -122.3215, 15],
-        'Malmö': [55.6060, 13.0010, 15],
-		'Kharkiv': [50.0732, 36.2486, 13]
+		'Kharkiv': [50.0732, 36.2486, 13],
+		'Ukraine': [47.8722, 31.8064, 7.1]
     };
 	
-    var map_start_location = locations['Kharkiv'];
+    var map_start_location = locations['Ukraine'];
     var mapillary_client_id = "WTlZaVBSWmxRX3dQODVTN2gxWVdGUTpjOTBkYzljZWQxOTkxOWIy";
 
     /*** URL parsing ***/

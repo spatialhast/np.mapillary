@@ -6,102 +6,99 @@
     http://mapzen.com
 -->
 <html lang="en-us">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mapillary Explorer</title>
+    <title>NP@Mapillary 2015</title>
 
     <link rel="stylesheet" href="lib/leaflet/leaflet.css" />
-	<link rel="stylesheet" href="lib/bootstrap-3.3.5/css/bootstrap.min.css">
-	<link rel="stylesheet" href="lib/font-awesome-4.2.0/css/font-awesome.min.css">
-	
+    <link rel="stylesheet" href="lib/bootstrap-3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="lib/font-awesome-4.2.0/css/font-awesome.min.css">
+
     <style>
         body {
             margin: 0px;
             border: 0px;
             padding: 0px;
         }
-
+        
         #map {
             background: rgba(0, 0, 0, 0);
             height: 100%;
             width: 100%;
             position: absolute;
         }
-
-
-    .label {
-        /*width: 200px;*/
-        /*margin-left: -100px;*/
-        position: absolute;
-        z-index: 10;
-        text-align: left;
-        margin: 0px;
-        background-color: rgba(50,50,50,0.9);
-        padding: 2px;
-        /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
-        /*word-wrap: break-word;*/
-    }
-
-    .labelLine {
-        padding: 1px 3px;
-        font-family: Helvetica, sans-serif;
-        font-size: 16px;
-        color: white;
-        opacity: 2.0;
-        margin: 0px;
-        display: block;
-    }
-
-    .labelLine:hover {
-        outline: 2px solid gold;
-    }
-	
+        
+        .label {
+            /*width: 200px;*/
+            /*margin-left: -100px;*/
+            position: absolute;
+            z-index: 10;
+            text-align: left;
+            margin: 0px;
+            background-color: rgba(50, 50, 50, 0.9);
+            padding: 2px;
+            /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+            /*word-wrap: break-word;*/
+        }
+        
+        .labelLine {
+            padding: 1px 3px;
+            font-family: Helvetica, sans-serif;
+            font-size: 16px;
+            color: white;
+            opacity: 2.0;
+            margin: 0px;
+            display: block;
+        }
+        
+        .labelLine:hover {
+            outline: 2px solid gold;
+        }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <div id="map"></div>
 
 
-<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">NP.Mapillary</h4>
-          </div>
-          <div class="modal-body">
-		  
-
-			
-            <div class="tab-content" id="aboutTabsContent">
-              <div class="tab-pane fade active in" id="about">
-                <p>A simple, responsive template for building web mapping applications with <a href="http://getbootstrap.com/">Bootstrap 3</a>, <a href="http://leafletjs.com/" target="_blank">Leaflet</a>.</p>
-                <div class="panel panel-primary">
-                  <div class="panel-heading">Features</div>
-                  <ul class="list-group">
-                    <li class="list-group-item">Fullscreen mobile-friendly map template with responsive navbar and modal placeholders</li>
-                    <li class="list-group-item">jQuery loading of external GeoJSON files</li>
-                    <li class="list-group-item">Logical multiple layer marker clustering via the <a href="https://github.com/Leaflet/Leaflet.markercluster" target="_blank">leaflet marker cluster plugin</a></li>
-                    <li class="list-group-item">Elegant client-side multi-layer feature search with autocomplete using <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a></li>
-                    <li class="list-group-item">Responsive sidebar feature list synced with map bounds, which includes sorting and filtering via <a href="http://listjs.com/" target="_blank">list.js</a></li>
-                    <li class="list-group-item">Marker icons included in grouped layer control via the <a href="https://github.com/ismyrnow/Leaflet.groupedlayercontrol" target="_blank">grouped layer control plugin</a></li>
-                  </ul>
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">NP@Mapillary 2015</h4>
                 </div>
-              </div>
-			  
-		  
+                <div class="modal-body">
+
+                    <p>Конкурс геотегованих фото ПЗФ</p>
+
+                    <p><a href="http://wiki.openstreetmap.org/wiki/Uk:NP@Mapillary_2015">Cторінка на сайті OpenStreetMap Wiki</a>, <a href="http://forum.openstreetmap.org/viewtopic.php?id=40906">Cторінка на форумі OpenStreetMap</a></p>
+                    <p>Статистика:</p>
+                    <table data-toggle="table" data-url="data.json" data-cache="false" data-height="auto">
+                        <thead>
+                            <tr>
+                                <th data-field="place" data-formatter="placeNumber">Place</th>
+                                <th data-field="name" data-formatter="linkUserName">User Name</th>
+                                <th data-field="paname" data-formatter="panameReplace">PA Name</th>
+                                <th data-field="count">Photo Count</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <p><small>оновлено: 03.11.2015</small></p>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
         </div>
-      </div>
-    </div>		
-	
+    </div>
+
     <!-- 3rd party libraries -->
     <script src="lib/leaflet/leaflet.js"></script>
     <!-- bog-standard leaflet URL hash -->
@@ -118,81 +115,102 @@
 
     <!-- Adding a script block to post message to the parent container (think iframed demos) -->
     <script type="text/javascript">
-      window.addEventListener("hashchange",function(){parent.postMessage(window.location.hash, "*")});
+        window.addEventListener("hashchange", function() {
+            parent.postMessage(window.location.hash, "*")
+        });
     </script>
-	
-	
+
+
     <!-- Mapzen map UI  -->
     <script src='//s3.amazonaws.com/assets-staging.mapzen.com/ui/mapzen-ui.min.js'></script>
     <script>
-      MPZN.bug({
-      name: 'Tangram',
-      link: 'https://mapzen.com/projects/tangram',
-      tweet: 'Mapillary Data Explorer from @mapzen',
-      repo: 'https://github.com/tangrams/mapillary-explorer/'
-    });
+        MPZN.bug({
+            name: 'Tangram',
+            link: 'https://mapzen.com/projects/tangram',
+            tweet: 'Mapillary Data Explorer from @mapzen',
+            repo: 'https://github.com/tangrams/mapillary-explorer/'
+        });
     </script>
-  
-	<!-- Sed Default Closed Controls --> <!-- Need Fix -->
-	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>	
-	<script src="lib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-	<script src="lib/leaflet.easybutton/easy-button.js"></script>
-	
-	<script>
-		$('.close-button').text('Open Controls');
-		$('div.dg.main.a ul').addClass('closed');
-		
-		
-		// deactivate close control
-		
-		$("#aboutModal").modal("show");
-		
-		L.easyButton('fa-info-circle',
-			function() {
-				$('#aboutModal').modal('show');
-				$(".navbar-collapse.in").collapse("hide");
-				return false;
-			},
-			'About map'
-		).addTo(map);		
-		
-    </script>
-	
-    <style>
-    #mz-bug {
-        visibility: hidden;
-    }
 
-    @media (min-width: 600px) {
-        /* enlarge dat.gui */
-        .dg {
-            font-size: 12pt;
+    <!-- Sed Default Closed Controls -->
+    <!-- Need Fix -->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="lib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+    <script src="lib/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="lib/leaflet.easybutton/easy-button.js"></script>
+
+    <script>
+        $('.close-button').text('Open Controls');
+        $('div.dg.main.a ul').addClass('closed');
+
+
+        // deactivate close control
+
+        $("#aboutModal").modal("show");
+
+        L.easyButton('fa-info-circle',
+            function() {
+                $('#aboutModal').modal('show');
+                $(".navbar-collapse.in").collapse("hide");
+                return false;
+            },
+            'About map'
+        ).addTo(map);
+
+        function placeNumber(value, row, index) {
+            return 1 + index;
+        };
+
+
+        function linkUserName(value, row) {
+            return '<a href="https://www.mapillary.com/profile/' + value + '">' + value + '</a>';
+        };
+
+
+
+
+        function panameReplace(value, row) {
+            var old = JSON.stringify(value).replace(/","/g, ', ').slice(2, -2);
+            return old;
+        };
+    </script>
+
+    <style>
+        #mz-bug {
+            visibility: hidden;
         }
-        .dg li:not(.folder) {
-            height: 40px;
-            line-height: 40px;
+        
+        @media (min-width: 600px) {
+            /* enlarge dat.gui */
+            .dg {
+                font-size: 12pt;
+            }
+            .dg li:not(.folder) {
+                height: 40px;
+                line-height: 40px;
+            }
+            .dg .c .slider {
+                height: 30px;
+            }
+            .dg .c input[type=text] {
+                font-size: 12pt;
+                height: 24px;
+            }
         }
-        .dg .c .slider {
-            height: 30px;   
+        
+        @media (max-width: 599px) {
+            /*shrink dat.gui*/
+            .dg.main {
+                font-size: 10pt;
+                margin-top: 50px;
+                width: 200px !important;
+            }
+            .dg.main .close-button {
+                width: 200px !important;
+            }
         }
-        .dg .c input[type=text] {
-            font-size: 12pt;
-            height: 24px;   
-        }
-    }
-    @media (max-width: 599px) {
-        /*shrink dat.gui*/
-        .dg.main {
-            font-size: 10pt;
-            margin-top: 50px;
-            width: 200px !important;
-        }
-        .dg.main .close-button {
-            width: 200px !important;
-        }
-    }
-	
     </style>
-    
-  </body>
+
+</body>
+
 </html>
