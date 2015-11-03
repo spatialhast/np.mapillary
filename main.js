@@ -135,7 +135,6 @@ map = (function () {
         
         var now = new Date().getTime();
         gui.min = 1442264400000;
-        //gui.min = 1370000000000;
         var min = gui.add(gui, 'min', 1370000000000, now).name("min date");
         min.onChange(function(value) {
             scene.config.layers["mapillary-sequences"].properties.min = value;
