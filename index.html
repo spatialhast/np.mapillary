@@ -1,232 +1,201 @@
-<!doctype html>
-<!--
-    Tangram: real-time WebGL rendering for OpenStreetMap
-
-    http://github.com/tangrams/tangram
-    http://mapzen.com
--->
-<html lang="en-us">
-
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NP@Mapillary 2015</title>
+	<title>NP@Mapillary 2015</title>
+	
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="Analyzing OpenStreetMap tile map access logs data in Ukraine">
+	<meta name="keywords" content="data, visualization, geospatial, geo, spatial, OpenStreetMap, OSM, tile logs">
+	<link rel="shortcut icon" href="assets/icon.png">
 
-    <link rel="stylesheet" href="lib/leaflet/leaflet.css" />
-    <link rel="stylesheet" href="lib/bootstrap-3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="lib/bootstrap-table/bootstrap-table.min.css">
-    <link rel="stylesheet" href="lib/font-awesome-4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/leaflet-0.7.7/leaflet.css" />
+	<link rel="stylesheet" href="assets/bootstrap-3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/bootstrap-table/bootstrap-table.min.css">	
+	<link rel="stylesheet" href="assets/font-awesome-4.2.0/css/font-awesome.min.css">		
 
-    <style>
-        body {
-            margin: 0px;
-            border: 0px;
-            padding: 0px;
-        }
-        
-        #map {
-            background: rgba(0, 0, 0, 0);
-            height: 100%;
-            width: 100%;
-            position: absolute;
-        }
-        
-        .label {
-            /*width: 200px;*/
-            /*margin-left: -100px;*/
-            position: absolute;
-            z-index: 10;
-            text-align: left;
-            margin: 0px;
-            background-color: rgba(50, 50, 50, 0.9);
-            padding: 2px;
-            /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
-            /*word-wrap: break-word;*/
-        }
-        
-        .labelLine {
-            padding: 1px 3px;
-            font-family: Helvetica, sans-serif;
-            font-size: 16px;
-            color: white;
-            opacity: 2.0;
-            margin: 0px;
-            display: block;
-        }
-        
-        .labelLine:hover {
-            outline: 2px solid gold;
-        }
-    </style>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+		}
+		html, body, #map {
+			height: 100%;
+			width: 100%;
+		}	
+	</style>
+
 </head>
 
 <body>
-    <div id="map"></div>
 
+	<div id="map" class="map"></div>
 
-    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">NP@Mapillary 2015</h4>
-                </div>
-                <div class="modal-body">
+	<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">NP@Mapillary 2015</h4>
+				</div>
+				<div class="modal-body">
 
-                    <p>Конкурс геотегованих фото ПЗФ</p>
+					<p>Конкурс геотегованих фото ПЗФ</p>
 
-                    <p><a href="http://wiki.openstreetmap.org/wiki/Uk:NP@Mapillary_2015">Cторінка на сайті OpenStreetMap Wiki</a>, <a href="http://forum.openstreetmap.org/viewtopic.php?id=40906">Cторінка на форумі OpenStreetMap</a></p>
-                    <br>
-					<p>Статистика зібраних фотографій у проміжок часу 15.09.2015 - 15.12.2015 в межах ПЗФ:</p>
-                    <table data-toggle="table" data-url="data/data.json" data-cache="false" data-height="auto">
-                        <thead>
-                            <tr>
-                                <th data-field="place" data-formatter="placeNumber">Місце</th>
-                                <th data-field="name" data-formatter="linkUserName">Mapillary профіль</th>
-                                <th data-field="paname" data-formatter="panameReplace">Об'єкти ПЗФ</th>
-                                <th data-field="count">Кількість фото</th>
-                            </tr>
-                        </thead>
-                    </table>
+					<p><a href="http://wiki.openstreetmap.org/wiki/Uk:NP@Mapillary_2015">Cторінка на сайті OpenStreetMap Wiki</a>, <a href="http://forum.openstreetmap.org/viewtopic.php?id=40906">Cторінка на форумі OpenStreetMap</a></p>
 					<br>
-                    <p>Загальна статистика зібраних фотографій в межах ПЗФ:</p>
-                    <table data-toggle="table" data-url="data/data_full.json" data-cache="false" data-height="auto">
-                        <thead>
-                            <tr>
-                                <th data-field="name" data-formatter="linkUserName">Mapillary профіль</th>
-                                <th data-field="paname" data-formatter="panameReplace">Об'єкти ПЗФ</th>
-                                <th data-field="count">Кількість фото</th>
-                            </tr>
-                        </thead>
-                    </table>	
+					<p>Статистика зібраних фотографій у проміжок часу 15.09.2015 - 15.12.2015 в межах ПЗФ:</p>
+					<table data-toggle="table" data-url="data/data.json" data-cache="false" data-height="auto">
+						<thead>
+							<tr>
+								<th data-field="place" data-formatter="placeNumber">Місце</th>
+								<th data-field="name" data-formatter="linkUserName">Mapillary профіль</th>
+								<th data-field="paname" data-formatter="panameReplace">Об'єкти ПЗФ</th>
+								<th data-field="count">Кількість фото</th>
+							</tr>
+						</thead>
+					</table>
+					<br>
+					<p>Загальна статистика зібраних фотографій в межах ПЗФ:</p>
+					<table data-toggle="table" data-url="data/data_full.json" data-cache="false" data-height="auto">
+						<thead>
+							<tr>
+								<th data-field="name" data-formatter="linkUserName">Mapillary профіль</th>
+								<th data-field="paname" data-formatter="panameReplace">Об'єкти ПЗФ</th>
+								<th data-field="count">Кількість фото</th>
+							</tr>
+						</thead>
+					</table>	
 					
-                    <p><small>Оновлено: 03.11.2015</small></p>
+					<p><small>Оновлено: 03.11.2015 (оновлення виконується раз на тиждень)</small></p>
+					
+					<p>Для перегляду кордонів ПЗФ та покриття <a href="https://www.mapillary.com/">Mapillary</a> закрийте поточне вікно і перейдіть до карти. Межі ПЗФ взяті з проекту <a href="https://www.openstreetmap.org/">OpenStreetMap</a>. Для перегляду об'єкту ПЗФ на сторінці OpenStreetMap на обраному полігоні клікніть мишкою два рази.</p>
 
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<script src="assets/jquery-2.0.0.min.js"></script>
+	<script src="assets/leaflet-0.7.7/leaflet.js"></script>
+	<script src="assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+	<script src="assets/bootstrap-table/bootstrap-table.min.js"></script>
+	<script src="assets/leaflet.easybutton/easy-button.js"></script>	
+	<script src="assets/leaflet-hash.js"></script>	
+	<script src="assets/Leaflet.MapboxVectorTile.min.js"></script>	
 
-    <!-- 3rd party libraries -->
-    <script src="lib/leaflet/leaflet.js"></script>
-    <!-- bog-standard leaflet URL hash -->
-    <script src="lib/leaflet-hash.js"></script>
-    <!-- A lightweight graphical user interface for changing variables in JavaScript.  -->
-    <script src="lib/dat.gui.min.js"></script>
-    <!-- End of 3rd party libraries -->
+	<script>
 
-    <!-- Main tangram library -->
-    <!--script src="https://mapzen.com/tangram/0.2/tangram.debug.js"></script-->
-    <script src="https://mapzen.com/tangram/0.2/tangram.min.js"></script>
+$("#aboutModal").modal("show");
 
-	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <!-- Demo module -->
-    <script src="main.js"></script>
+function placeNumber(value, row, index) {
+	return 1 + index;
+};
 
-    <!-- Adding a script block to post message to the parent container (think iframed demos) -->
-    <script type="text/javascript">
-        window.addEventListener("hashchange", function() {
-            parent.postMessage(window.location.hash, "*")
-        });
-    </script>
+function linkUserName(value, row) {
+	return '<a href="https://www.mapillary.com/profile/' + value + '">' + value + '</a>';
+};
 
+function panameReplace(value, row, index) {
+	return JSON.stringify(value).replace(/","/g, ', ').slice(2, -2);
+};
 
-    <!-- Mapzen map UI  -->
-    <script src='//s3.amazonaws.com/assets-staging.mapzen.com/ui/mapzen-ui.min.js'></script>
-    <script>
-        MPZN.bug({
-            name: 'Tangram',
-            link: 'https://mapzen.com/projects/tangram',
-            tweet: 'Mapillary Data Explorer from @mapzen',
-            repo: 'https://github.com/tangrams/mapillary-explorer/'
-        });
-    </script>
+var layerOSM = L.tileLayer('http://{s}.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q', {
+	attribution: 'Map style &copy; <a href="https://www.mapbox.com/about/maps/">MapBox</a>; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+});
 
-    <!-- Sed Default Closed Controls -->
-    <!-- Need Fix -->
-    <script src="lib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-    <script src="lib/bootstrap-table/bootstrap-table.min.js"></script>
-    <script src="lib/leaflet.easybutton/easy-button.js"></script>
+var map = new L.Map('map', {
+	layers: [layerOSM],
+	minZoom: 6,
+	maxZoom: 18,
+	zoom: 7, 
+	center: [48.6, 32.2],
+	maxBounds: new L.LatLngBounds(new L.LatLng(43.9655, 12.4158), new L.LatLng(53.0720, 52.0862))
+});
 
-    <script>
-        //$('.close-button').text('Open Controls');
-        //$('div.dg.main.a ul').addClass('closed');
+L.easyButton('fa-list-ul',
+	function() {
+		$('#aboutModal').modal('show');
+		return false;
+	},
+	'About the map'
+	).addTo(map);
 
+var hash = new L.Hash(map);
 
-        //$("#aboutModal").modal("show");
+var nature_conservation_polygon = L.geoJson(null, {
+	style: function(feature) {
+		if (feature.properties.name === null) {
+			return {
+				color: "#ff4c4c",
+				fill: true,
+				opacity: 0.7,
+				weight: 2
+			};
+		} else
+		return {
+			color: "#9ace00",
+			fill: true,
+			opacity: 0.7,
+			weight: 2
+		};
+	},
+	onEachFeature: function(feature, layer_nature_conservation_polygon) {
+		layer_nature_conservation_polygon.on({
+			dblclick: function(e) {
+				var url = 'http://www.openstreetmap.org/' + (feature.properties.osm_id < 0 ? 'relation/' + feature.properties.osm_id * (-1) : 'way/' + feature.properties.osm_id);
+				window.open(url);
+			}
+		});
+	}
+});
+$.getJSON("data/nature_conservation_polygon.geojson", function(data) {
+	nature_conservation_polygon.addData(data);
+});	
+nature_conservation_polygon.addTo(map);	
 
-        L.easyButton('fa-list-ul',
-            function() {
-                $('#aboutModal').modal('show');
-                $(".navbar-collapse.in").collapse("hide");
-                return false;
-            },
-            'About the map'
-        ).addTo(map);
+var debug = {};
+var mvtSource = new L.TileLayer.MVTSource({
+	url: "http://d2munx5tg0hw47.cloudfront.net/tiles/{z}/{x}/{y}.mapbox",
+	debug: false,
+	clickableLayers: ["mapillary-sequences"],
+	getIDForLayerFeature: function(feature) {
+  //console.log(feature.properties);
+  return feature.properties.key;
+},
+filter: function(feature, context) {
+	if (feature.layer.name === 'mapillary-sequences') {
+		return true;
+	}
+	return false;
+},
 
-        function placeNumber(value, row, index) {
-            return 1 + index;
-        };
+style: function (feature) {
+	var style = {};
+	style.color = 'rgba(161,217,155,0.9)';
+	style.size = 3;
+	style.selected = {
+		color: 'rgba(255,25,0,0.5)',
+		size: 4
+	};
+	return style;
+}
 
-        function linkUserName(value, row) {
-            return '<a href="https://www.mapillary.com/profile/' + value + '">' + value + '</a>';
-        };
+});
+debug.mvtSource = mvtSource;
 
-        function panameReplace(value, row, index) {
-            return JSON.stringify(value).replace(/","/g, ', ').slice(2, -2);
-        };
-    </script>
+//Globals that we can change later.
+var fillColor = 'rgba(149,139,255,0.4)';
+var strokeColor = 'rgb(20,20,20)';
 
-    <style>
-        #mz-bug {
-            visibility: hidden;
-        }
-        
-        @media (min-width: 600px) {
-            /* enlarge dat.gui */
-            .dg {
-                font-size: 12pt;
-            }
-            .dg li:not(.folder) {
-                height: 40px;
-                line-height: 40px;
-            }
-            .dg .c .slider {
-                height: 30px;
-            }
-            .dg .c input[type=text] {
-                font-size: 12pt;
-                height: 24px;
-            }
-        }
-        
-        @media (max-width: 599px) {
-            /*shrink dat.gui*/
-            .dg.main {
-                font-size: 10pt;
-                margin-top: 50px;
-                width: 200px !important;
-            }
-            .dg.main .close-button {
-                width: 200px !important;
-            }
-        }
+//Add layer
+map.addLayer(mvtSource);
 
-		.mz-geolocator {
-		  display: none;
-		}
-
-		.leaflet-top.leaflet-left{
-		  top: 40px;
-		}
-		
-    </style>
+</script>
 
 </body>
-
 </html>
