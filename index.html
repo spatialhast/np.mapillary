@@ -77,8 +77,9 @@
                     <p>Конкурс геотегованих фото ПЗФ</p>
 
                     <p><a href="http://wiki.openstreetmap.org/wiki/Uk:NP@Mapillary_2015">Cторінка на сайті OpenStreetMap Wiki</a>, <a href="http://forum.openstreetmap.org/viewtopic.php?id=40906">Cторінка на форумі OpenStreetMap</a></p>
-                    <p>Статистика:</p>
-                    <table data-toggle="table" data-url="data.json" data-cache="false" data-height="auto">
+                    <br>
+					<p>Статистика зібраних фотографій у проміжок часу 15.09.2015 - 15.12.2015 в межах ПЗФ:</p>
+                    <table data-toggle="table" data-url="data/data.json" data-cache="false" data-height="auto">
                         <thead>
                             <tr>
                                 <th data-field="place" data-formatter="placeNumber">Місце</th>
@@ -88,7 +89,19 @@
                             </tr>
                         </thead>
                     </table>
-                    <p><small>оновлено: 03.11.2015</small></p>
+					<br>
+                    <p>Загальна статистика зібраних фотографій в межах ПЗФ:</p>
+                    <table data-toggle="table" data-url="data/data_full.json" data-cache="false" data-height="auto">
+                        <thead>
+                            <tr>
+                                <th data-field="name" data-formatter="linkUserName">Mapillary профіль</th>
+                                <th data-field="paname" data-formatter="panameReplace">Об'єкти ПЗФ</th>
+                                <th data-field="count">Кількість фото</th>
+                            </tr>
+                        </thead>
+                    </table>	
+					
+                    <p><small>Оновлено: 03.11.2015</small></p>
 
 
                 </div>
@@ -111,6 +124,7 @@
     <!--script src="https://mapzen.com/tangram/0.2/tangram.debug.js"></script-->
     <script src="https://mapzen.com/tangram/0.2/tangram.min.js"></script>
 
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <!-- Demo module -->
     <script src="main.js"></script>
 
@@ -135,7 +149,6 @@
 
     <!-- Sed Default Closed Controls -->
     <!-- Need Fix -->
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="lib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
     <script src="lib/bootstrap-table/bootstrap-table.min.js"></script>
     <script src="lib/leaflet.easybutton/easy-button.js"></script>
@@ -145,15 +158,15 @@
         //$('div.dg.main.a ul').addClass('closed');
 
 
-        $("#aboutModal").modal("show");
+        //$("#aboutModal").modal("show");
 
-        L.easyButton('fa-info-circle',
+        L.easyButton('fa-list-ul',
             function() {
                 $('#aboutModal').modal('show');
                 $(".navbar-collapse.in").collapse("hide");
                 return false;
             },
-            'About map'
+            'About the map'
         ).addTo(map);
 
         function placeNumber(value, row, index) {
