@@ -1,4 +1,4 @@
-# Конкурс геотегованих фото ПЗФ NP@Mapillary 2015
+## Конкурс геотегованих фото ПЗФ NP@Mapillary 2015
 
 Cторінка на сайті OpenStreetMap Wiki
 http://wiki.openstreetmap.org/wiki/Uk:NP@Mapillary_2015
