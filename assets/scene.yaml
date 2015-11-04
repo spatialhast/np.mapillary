@@ -51,8 +51,8 @@ layers:
                 text_source: username
                 font:
                     typeface: 8pt Helvetica
-                    fill: white
-                    stroke: { color: black, width: 2 }
+                    fill: 'rgba(17,1,150,0.6)'
+                    stroke: { color: white, width: 2 }
 					
 					
 					
