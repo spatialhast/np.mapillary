@@ -17,7 +17,7 @@ sources:
     mapillary:
         type: MVT
         url:  //d2munx5tg0hw47.cloudfront.net/tiles/{z}/{x}/{y}.mapbox
-        max_zoom: 18
+        max_zoom: 15
 	
 
 		
@@ -53,3 +53,6 @@ layers:
                     typeface: 8pt Helvetica
                     fill: white
                     stroke: { color: black, width: 2 }
+					
+					
+					
