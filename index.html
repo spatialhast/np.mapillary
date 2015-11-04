@@ -109,7 +109,7 @@ var layerOSM = L.tileLayer('http://{s}.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/
 var map = new L.Map('map', {
 	layers: [layerOSM],
 	minZoom: 6,
-	maxZoom: 18,
+	maxZoom: 15,
 	zoom: 7, 
 	center: [48.6, 32.2],
 	maxBounds: new L.LatLngBounds(new L.LatLng(43.9655, 12.4158), new L.LatLng(53.0720, 52.0862))
@@ -174,12 +174,13 @@ filter: function(feature, context) {
 
 style: function (feature) {
 	var style = {};
-	style.color = 'rgba(161,217,155,0.9)';
+	//style.color = 'rgba(161,217,155,0.9)';
+	style.color = 'rgba(255,25,0,0.5)';
 	style.size = 3;
-	style.selected = {
-		color: 'rgba(255,25,0,0.5)',
-		size: 4
-	};
+	//style.selected = {
+	//	color: 'rgba(255,25,0,0.5)',
+	//	size: 4
+	//};
 	return style;
 }
 
@@ -187,8 +188,8 @@ style: function (feature) {
 debug.mvtSource = mvtSource;
 
 //Globals that we can change later.
-var fillColor = 'rgba(149,139,255,0.4)';
-var strokeColor = 'rgb(20,20,20)';
+//var fillColor = 'rgba(149,139,255,0.4)';
+//var strokeColor = 'rgb(20,20,20)';
 
 //Add layer
 map.addLayer(mvtSource);
