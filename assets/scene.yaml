@@ -16,7 +16,7 @@ lights:
 sources:
     mapillary:
         type: MVT
-        url:  //d2munx5tg0hw47.cloudfront.net/tiles/{z}/{x}/{y}.mapbox
+        url:  https://d2munx5tg0hw47.cloudfront.net/tiles/{z}/{x}/{y}.mapbox
         max_zoom: 15
 	
 
