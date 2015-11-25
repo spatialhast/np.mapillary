@@ -38,7 +38,7 @@ layers:
             value_text: ""
             newest: '#00ff00'
             oldest: '#0000ff'
-            min: 1442264400000
+            min: 1420063200000
             max: 1469183337901
         draw:
             lines:
